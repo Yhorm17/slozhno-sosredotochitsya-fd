@@ -1,5 +1,622 @@
-/* Основные стили проекта. Это стили для темы, которую вы верстаете первой. */
+/*
+  Основные стили проекта (mobile first, тёмная тема как базовая).
+  Адаптив под планшет и десктоп — в медиавыражениях ниже.
+*/
+
+/* === БАЗА === */
 
 .page {
-  /* сохраните в разметке и стилях класс page у тега body. Он удобен, чтобы составлять селекторы для разных цветовых тем. */
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-regular);
+  font-size: 16px;
+  line-height: 1.4;
+  color: var(--text-color);
+
+  background-image: var(--bg-image);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-color: var(--bg-color);
+}
+
+/* === ДЕКОРАТИВНЫЕ ЭЛЕМЕНТЫ (header / footer) === */
+
+.decorated-zone {
+  position: relative;
+}
+
+.decorated-zone::before,
+.decorated-zone::after {
+  content: "";
+  position: absolute;
+  width: 25px;
+  height: 25px;
+}
+
+/* уголок в правом верхнем углу */
+.decorated-zone::before {
+  top: 10px;
+  right: 10px;
+  border-top: 1px solid var(--accent-color);
+  border-right: 1px solid var(--accent-color);
+}
+
+/* уголок в левом нижнем углу */
+.decorated-zone::after {
+  bottom: 10px;
+  left: 10px;
+  border-bottom: 1px solid var(--accent-color);
+  border-left: 1px solid var(--accent-color);
+}
+
+/* === ОБЩИЙ ДЕКОРАТИВНЫЙ КЛАСС ДЛЯ ЗАГОЛОВКОВ/ПЛАШЕК === */
+
+.title-decor {
+  background-color: var(--title-decor-bg-color);
+  color: var(--title-decor-text-color);
+  display: inline-block;
+}
+
+/* === HEADER === */
+
+.header {
+  height: 100vh;
+  min-height: 668px;
+  padding: 10px var(--container-padding-x) 66px;
+  margin-bottom: 40px;
+
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 20px;
+}
+
+/* декоративная надпись REC, видна только в тёмной теме */
+.header__rec-decor {
+  position: absolute;
+  top: 10px;
+  right: 19px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  color: var(--accent-color);
+  font-family: inherit;
+  text-transform: uppercase;
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-regular);
+  line-height: 25px;
+}
+
+.header__rec-decor::after {
+  content: "";
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background-color: var(--accent-color);
+  box-shadow: 0 0 4px 2px var(--accent-color);
+}
+
+/* меню тем — правый верх */
+.header__theme-menu {
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: end;
+  align-self: start;
+  margin-top: 64px;
+}
+
+.header__theme-menu-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 10px;
+  justify-items: end;
+}
+
+.header__theme-menu-button {
+  padding: 1.5px 13px;
+  height: 26px;
+  width: 70px;
+  text-transform: lowercase;
+  color: var(--theme-menu-button-color);
+  border: 1px solid transparent;
+  transition: border-color 0.3s ease;
+  background-color: transparent;
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-regular);
+  line-height: 18px;
+  cursor: pointer;
+  font-family: var(--font-family-base);
+}
+
+.header__theme-menu-button:hover {
+  border-color: color-mix(in srgb, var(--theme-menu-button-color) 40%, transparent);
+}
+
+.header__theme-menu-button:focus {
+  outline: none;
+}
+
+.header__theme-menu-button:focus-visible {
+  outline: none;
+  border-bottom: 1px solid var(--theme-menu-button-color);
+}
+
+.header__theme-menu-button_active {
+  border: 1px solid var(--theme-menu-button-color);
+  pointer-events: none;
+}
+
+/* заголовок — центр */
+.title {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  margin-top: 14px;
+
+  font-weight: var(--font-weight-bold);
+  line-height: 0.83;
+  font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  text-transform: lowercase;
+
+  justify-self: start;
+  align-self: center;
+
+  color: var(--title-color);
+  text-shadow: 4px 4px 0 var(--accent-color);
+}
+
+/* текст — низ */
+.header__text {
+  grid-column: 1 / -1;
+  grid-row: 3;
+  align-self: end;
+  font-size: var(--font-size-regular);
+  line-height: var(--line-height-regular);
+  font-weight: var(--font-weight-bold);
+  padding: var(--padding-reset);
+}
+
+/* === CONTENT (main) === */
+
+.content {
+  padding: 0 var(--container-padding-x);
+  margin-bottom: 34px;
+
+  display: grid;
+  row-gap: 50px;
+}
+
+.content-section {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 20px;
+}
+
+.content-section__title {
+  grid-column: 1;
+  font-size: var(--font-size-regular);
+  line-height: var(--line-height-regular);
+  font-weight: var(--font-weight-bold);
+  padding: var(--padding-reset);
+  color: var(--content-section-title-color);
+}
+
+.content-wrap {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 20px;
+}
+
+.content-section__subtitle {
+  font-size: var(--font-size-regular);
+  line-height: var(--line-height-regular);
+  font-weight: var(--font-weight-bold);
+  text-transform: lowercase;
+  justify-self: start;
+}
+
+.content-card {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: min-content min-content;
+  row-gap: 10px;
+}
+
+.content-card__title {
+  grid-column: 1;
+  font-size: var(--font-size-regular);
+  line-height: var(--line-height-regular);
+  font-weight: var(--font-weight-bold);
+  padding: var(--padding-reset);
+}
+
+/* для секции "Как концентрироваться лучше..." заголовки обычным весом */
+.content-card__title_accent {
+  font-weight: var(--font-weight-regular);
+}
+
+.content-card__text {
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-regular);
+  line-height: var(--line-height-regular);
+}
+
+.content-card__link {
+  color: var(--link-color);
+  text-shadow: 2px 2px 0 var(--accent-color);
+}
+
+.content-card__link:hover {
+  border-bottom: 1px solid currentColor;
+}
+
+.content-card__link:focus {
+  outline: none;
+}
+
+.content-card__link:focus-visible {
+  outline: 1px solid currentColor;
+}
+
+/* === GALLERY === */
+
+.gallery-section {
+  display: grid;
+  row-gap: 10px;
+}
+
+.gallery-section__title {
+  grid-column: 1;
+  font-size: var(--font-size-regular);
+  line-height: var(--line-height-regular);
+  font-weight: var(--font-weight-bold);
+  padding: var(--padding-reset);
+}
+
+.gallery {
+  display: grid;
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.gallery__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* === FOOTER === */
+
+.footer {
+  display: grid;
+  place-items: center;
+
+  height: 100vh;
+  min-height: 668px;
+  padding: 10px;
+}
+
+.footer__title {
+  font-weight: var(--font-weight-bold);
+  line-height: 0.83;
+  font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  text-transform: lowercase;
+
+  color: var(--title-color);
+  text-shadow: 4px 4px 0 var(--accent-color);
+}
+
+/* ==========================================================
+   ШАГ 4: АДАПТИВ — планшет (от 768px)
+   ========================================================== */
+
+@media (width >= 768px) {
+
+  /* --- HEADER --- */
+
+  .decorated-zone::before,
+  .decorated-zone::after {
+    content: "";
+    position: absolute;
+    width: 25px;
+    height: 25px;
+}
+
+  /* уголок в правом верхнем углу */
+  .decorated-zone::before {
+    top: 20px;
+    right: 20px;
+  }
+  
+  .header{
+    min-height: 1024px;
+    padding: 20px 20px 183px 0px;
+    margin-bottom: 60px;
+  }
+
+  .header__rec-decor {
+    top: 20px;
+    right: 29px;
+  }
+
+
+/* меню тем — правый верх */
+  .header__theme-menu {
+    margin-top: 171px;
+  }
+
+  .title {
+    font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
+  }
+
+  .header__text {
+    grid-column: 2;
+    justify-self: end;
+    max-width: 364px;
+  }
+
+  /* уголок в левом нижнем углу */
+  .decorated-zone::after {
+    bottom: 20px;
+    left: 20px;
+  }
+
+  /* --- CONTENT --- */
+
+  .content {
+    padding: 0 20px;
+    row-gap: 80px;
+    margin-bottom: 60px;
+  }
+
+  .content-section {
+    grid-template-columns: 236px 1fr;
+    column-gap: 20px;
+    /*row-gap: 20px;*/
+    align-items: start;
+  }
+
+  .content-section__title {
+    grid-column: 1;
+    grid-row: 1 / -1;
+    align-self: start;
+  }
+
+  .content-card {
+    grid-column: 2;
+  }
+
+  .focus-killers-section {
+    display: grid;
+    grid-template-rows: auto repeat(3, 1fr);
+    grid-template-columns: 1fr;
+  }
+
+  .fks__title{
+    grid-column: 1;
+    align-self: start;
+    justify-self: start;
+    max-width: 236px;
+  }
+
+  .fks__card{
+    grid-column: 1;
+  }
+
+  .content-wrap {
+    grid-column: 2;
+  }
+
+  .content-section__subtitle {
+    grid-column: 2;
+    width: 100%;
+  }
+
+  /* --- GALLERY --- */
+
+  .gallery-section__title {
+    margin-bottom: 10px;
+  }
+
+  .gallery {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, auto);
+    grid-auto-flow: dense;
+    gap: 20px;
+  }
+
+  /* Раскладка галереи по макету 768:
+     закат — 1 строка, 1 колонка
+     мороженое — 1-2 строка, 3 колонка
+     кассета — 2-3 строка, 1-2 колонка
+     книги — 2 строка, 2 колонка
+     улица — 3 строка, 2-3 колонка
+  */
+  .gallery__item:nth-child(1) {
+    grid-column: 1 / 3;
+    grid-row: 1;
+  }
+
+  .gallery__item:nth-child(2) {
+    grid-column: 3;
+    grid-row: 1 / 3;
+  }
+
+  .gallery__item:nth-child(3) {
+    grid-column: 1;
+    grid-row: 2 / -1;
+  }
+
+  .gallery__item:nth-child(4) {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+  }
+
+  .gallery__item:nth-child(5) {
+    grid-column: 2 / -1;
+    grid-row: 3;
+  }
+
+  /* --- FOOTER --- */
+
+  .footer {
+    padding: 20px 40px;
+    min-height: 768px;
+  }
+}
+
+/* ==========================================================
+   ШАГ 4: АДАПТИВ — десктоп (от 1024px)
+   ========================================================== */
+
+@media (width >= 1024px) {
+ 
+  /* --- HEADER --- */
+ 
+  .header {
+    min-height: 768px;
+    padding: 20px 20px 134px 0;
+    margin: 0;
+
+    display: grid;
+    grid-template-rows: 1fr min-content 1fr;
+    align-items: center;
+  }
+
+  .header__theme-menu {
+    grid-row: 1;
+    justify-self: center;
+    margin: 0;
+  }
+
+  .header__theme-menu-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 10px;
+  }
+
+  .title {
+    grid-row: 2 / 3;
+    grid-column: 1 / -1;
+    margin: 0;
+  }
+
+  .header__text {
+    grid-row: 3;
+    justify-self: right;
+    max-width: 100%;
+    max-height: max-content;
+    margin: 0;
+  }
+ 
+  /* --- CONTENT --- */
+ 
+  .content {
+    padding: 60px 20px;
+  }
+ 
+  /* Двухколонная секция: заголовок слева, карточки справа */
+  .content-section {
+    grid-template-columns: 315px 1fr;
+    column-gap: 20px;
+    row-gap: 20px;
+    align-items: start;
+  }
+ 
+  .content-section__title {
+    /* заголовок занимает всю левую колонку */
+    grid-column: 1;
+    grid-row: 1 / -1;
+  }
+ 
+  .content-section__subtitle {
+    grid-column: 2;
+    grid-row: 1;
+  }
+ 
+  .content-card {
+    grid-column: 2;
+  }
+ 
+  .focus-killers-section {
+    display: grid;
+    grid-template-rows: min-content 1fr;
+    grid-template-columns: unset;
+    row-gap: 20px;
+  }
+
+  .fks__title {
+    grid-row: 1 / 2;
+  }
+
+  .fks__content-wrap {
+    grid-row: 2 / 3;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 20px;
+  }
+
+  .fks__content-wrap:nth-child(1) {
+    grid-column: 1 / 2;
+  }
+
+  .fks__content-wrap:nth-child(2) {
+    grid-column: 2 / 3;
+  }
+
+  .fks__content-wrap:nth-child(3) {
+    grid-column: 3 / 4;
+  }
+
+  /* --- GALLERY --- */
+ 
+  /* Асимметричная сетка 3×3 по макету */
+  .gallery {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, auto);
+    gap: 20px;
+  }
+ 
+  /* Закат — левый верх, 1×1 */
+  .gallery__item:nth-child(1) {
+    grid-column: 1;
+    grid-row: 1;
+  }
+ 
+  /* Книги — средний верх, 1×1 */
+  .gallery__item:nth-child(2) {
+    grid-column: 2;
+    grid-row: 1;
+  }
+ 
+  /* Мороженое — правый, тянется на 2 строки */
+  .gallery__item:nth-child(3) {
+    grid-column: 3;
+    grid-row: 1 / 3;
+  }
+ 
+  /* Кассета — левый + средний, тянется на 2-ю и 3-ю строки */
+  .gallery__item:nth-child(4) {
+    grid-column: 1 / 3;
+    grid-row: 2 / 4;
+  }
+ 
+  /* Улица — правый низ, 1×1 */
+  .gallery__item:nth-child(5) {
+    grid-column: 3;
+    grid-row: 3;
+  }
+ 
+  /* --- FOOTER --- */
+ 
+  .footer {
+    min-height: 768px;
+  }
 }

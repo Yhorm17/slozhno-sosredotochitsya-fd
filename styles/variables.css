@@ -1,4 +1,36 @@
 /*
-  Переменные для вашего проекта
-  и их переопределение под различные устройства
+  Файл variables.css.
+  Здесь храним все переменные проекта: цвета, шрифты, размеры.
+  Основная тема — тёмная (neon). Переопределение для светлой темы — в light.css
 */
+
+:root {
+  /* Шрифты */
+  --font-family-base: "IBM Plex Mono", monospace;
+  --font-weight-regular: 400;
+  --font-weight-bold: 700;
+  --font-size-regular: 18px;
+  --line-height-regular: 23.4px;
+
+  /* Цвета (основная тёмная тема) */
+  --bg-color: #06092e;
+  --bg-image: url(../images/cover-image-dark.png);
+
+  --text-color: #ffffff;
+  --title-color: #ff00ff;
+  --accent-color: #ff007f;
+
+  --title-decor-bg-color: #ff007f;
+  --title-decor-text-color: #000000;
+
+  --content-section-title-color: #FF0070;
+  --theme-menu-button-color: #FF0070;
+
+  --link-color: var(--text-color);
+
+  /* Отступы */
+  --padding-reset: 0;
+  --container-padding-x: 10px;
+  --section-padding-y: 60px;
+  --card-gap: 30px;
+}
