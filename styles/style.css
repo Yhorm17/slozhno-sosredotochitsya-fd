@@ -325,7 +325,7 @@
     right: 20px;
   }
   
-  .header{
+  .header {
     padding: 20px;
     margin-bottom: 60px;
   }
@@ -382,14 +382,14 @@
     grid-template-columns: 1fr;
   }
 
-  .fks__title{
+  .fks__title {
     grid-column: 1;
     align-self: start;
     justify-self: start;
     max-width: 236px;
   }
 
-  .fks__card{
+  .fks__card {
     grid-column: 1;
   }
 
