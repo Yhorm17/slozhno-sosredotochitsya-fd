@@ -4,11 +4,6 @@
   переключая тему
 */
 
-/* REC видим только в тёмной теме */
-.header__rec-decor {
-  display: flex;
-}
-
 @media (prefers-color-scheme: dark) {
   :root {
     --bg-color: #06092e;
@@ -25,10 +20,6 @@
     --theme-menu-button-color: #FF0070;
 
     --link-color: #F1B2CE;
-  }
-
-  .header__rec-decor {
-    display: flex;
   }
 }
 
@@ -47,8 +38,4 @@
   --theme-menu-button-color: #FF0070;
 
   --link-color: #F1B2CE;
-}
-
-:root.theme-dark .header__rec-decor {
-  display: flex;
 }

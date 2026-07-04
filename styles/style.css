@@ -38,16 +38,16 @@
 .decorated-zone::before {
   top: 10px;
   right: 10px;
-  border-top: 1px solid var(--accent-color);
-  border-right: 1px solid var(--accent-color);
+  border-top: 1px solid var(--theme-menu-button-color);
+  border-right: 1px solid var(--theme-menu-button-color);
 }
 
 /* уголок в левом нижнем углу */
 .decorated-zone::after {
   bottom: 10px;
   left: 10px;
-  border-bottom: 1px solid var(--accent-color);
-  border-left: 1px solid var(--accent-color);
+  border-bottom: 1px solid var(--theme-menu-button-color);
+  border-left: 1px solid var(--theme-menu-button-color);
 }
 
 /* === ОБЩИЙ ДЕКОРАТИВНЫЙ КЛАСС ДЛЯ ЗАГОЛОВКОВ/ПЛАШЕК === */
@@ -237,6 +237,7 @@
 .content-card__link {
   color: var(--link-color);
   text-shadow: 2px 2px 0 var(--accent-color);
+  text-decoration: none;
 }
 
 .content-card__link:hover {
