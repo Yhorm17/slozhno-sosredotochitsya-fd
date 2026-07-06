@@ -39,3 +39,7 @@
 
   --link-color: #F1B2CE;
 }
+
+:root.theme-dark .header__rec-decor {
+  display: flex;
+}

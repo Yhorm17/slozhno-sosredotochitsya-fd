@@ -368,7 +368,6 @@
   }
 
   .content-section__title {
-    grid-column: 1;
     grid-row: 1 / -1;
     align-self: start;
   }
@@ -468,38 +467,20 @@
   }
 
   .header__theme-menu-list {
-    display: grid;
     grid-template-columns: repeat(3, 1fr);
     column-gap: 10px;
-  }
-
-  /* --- CONTENT --- */
- 
-  .content {
-    padding: 0 20px;
   }
  
   /* Двухколонная секция: заголовок слева, карточки справа */
   .content-section {
     grid-template-columns: 315px 1fr;
-    column-gap: 20px;
-    row-gap: 20px;
-    align-items: start;
-  }
- 
-  .content-section__title {
-    /* заголовок занимает всю левую колонку */
-    grid-column: 1;
-    grid-row: 1 / -1;
   }
  
   .content-section__subtitle {
-    grid-column: 2;
     grid-row: 1;
   }
  
   .focus-killers-section {
-    display: grid;
     grid-template-rows: min-content max-content;
     grid-template-columns: 1fr;
     gap: 20px;
@@ -520,7 +501,6 @@
     grid-row: 2;
     width: 100%;
 
-    display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
   }
