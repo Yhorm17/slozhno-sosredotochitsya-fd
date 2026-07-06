@@ -180,6 +180,11 @@
   row-gap: 20px;
 }
 
+.focus-killers-section {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
 .content-section__title {
   grid-column: 1;
   font-size: var(--font-size-regular);
@@ -377,9 +382,9 @@
   }
 
   .focus-killers-section {
-    display: grid;
+    /* display: grid; */
     grid-template-rows: auto repeat(3, 1fr);
-    grid-template-columns: 1fr;
+    /* grid-template-columns: 1fr; */
   }
 
   .fks__title {
@@ -481,8 +486,8 @@
   }
  
   .focus-killers-section {
-    grid-template-rows: min-content max-content;
-    grid-template-columns: 1fr;
+    grid-template-rows: min-content 1fr;
+    /* grid-template-columns: 1fr; */
     gap: 20px;
   }
 
